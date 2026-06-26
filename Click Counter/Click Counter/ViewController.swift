@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.frame = CGRect(x: 150, y: 150, width: 60, height: 60)
         label.text = "0"
+        view.addSubview(label)
         self.label = label
         
         //Buttons
@@ -27,9 +28,10 @@ class ViewController: UIViewController {
         button.setTitleColor(UIColor.blue, for: .normal)
         view.addSubview(button)
         
+        button.addTarget(self, action: #selector(ViewController.incrementCount), for: UIControl.Event.touchUpInside)
     }
     
-    func incrementCount() {
+    @objc func incrementCount() {
         self.count += 1
         self.label.text = "\(self.count)"
     }
